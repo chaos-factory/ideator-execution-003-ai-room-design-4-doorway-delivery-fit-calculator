@@ -9,8 +9,8 @@ export interface CalculationResult {
 }
 
 // Constants
-const CM_TO_IN = 0.393701;
 const IN_TO_CM = 2.54;
+const CM_TO_IN = 1 / IN_TO_CM;
 const DEFAULT_SAFETY_MARGIN_IN = 3;
 const DEFAULT_SAFETY_MARGIN_CM = 7.6;
 const WARN_THRESHOLD_IN = 1.5;

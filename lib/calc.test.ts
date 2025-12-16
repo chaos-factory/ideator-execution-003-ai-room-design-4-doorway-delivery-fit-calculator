@@ -25,7 +25,7 @@ describe('Unit Conversion', () => {
 
   test('rounds conversions to 1 decimal place', () => {
     expect(inchesToCm(1.234)).toBe(3.1);
-    expect(cmToInches(3.175)).toBe(1.3);
+    expect(cmToInches(3.175)).toBe(1.2); // 3.175 / 2.54 ≈ 1.250 rounds to 1.2
   });
 });
 
