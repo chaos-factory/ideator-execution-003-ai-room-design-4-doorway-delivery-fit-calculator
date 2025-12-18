@@ -39,11 +39,74 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Available Scripts
 
 - `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build for production
+- `npm run build` - Build for production (generates static export in `out/`)
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 - `npm test` - Run Jest unit tests
 - `npm run test:watch` - Run tests in watch mode
+
+## Deployment
+
+### GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+#### Automatic Deployment
+
+The site automatically deploys to GitHub Pages when you push to the `main` branch. The deployment workflow:
+
+1. **Build Workflow** (`.github/workflows/build.yml`)
+   - Runs on all pushes and pull requests
+   - Tests on Node.js 18.x and 20.x
+   - Runs linter, tests, and build
+   - Uploads build artifacts
+
+2. **Deploy Workflow** (`.github/workflows/deploy.yml`)
+   - Runs only on pushes to `main` branch
+   - Builds the site with static export
+   - Deploys to GitHub Pages
+
+#### Setup GitHub Pages
+
+To enable GitHub Pages for this repository:
+
+1. Go to repository **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. The site will be available at `https://chaos-factory.github.io/ideator-execution-003-ai-room-design-4-doorway-delivery-fit-calculator/`
+
+#### Manual Deployment
+
+You can also trigger deployment manually:
+
+1. Go to **Actions** tab in GitHub
+2. Select **Deploy to GitHub Pages** workflow
+3. Click **Run workflow**
+
+#### Local Static Export
+
+To generate a static export locally:
+
+```bash
+npm run build
+# Output will be in the 'out/' directory
+```
+
+The static files can be served by any static hosting service.
+
+#### Configuration
+
+The project uses Next.js static export mode configured in `next.config.ts`:
+
+```typescript
+{
+  output: 'export',
+  images: {
+    unoptimized: true,
+  }
+}
+```
+
+**Note**: If deploying to a subdirectory (e.g., `/repo-name/`), uncomment and set the `basePath` in `next.config.ts`.
 
 ## Project Structure
 
